@@ -1,0 +1,34 @@
+{
+	"name": "fetch-commute-from-hafas",
+	"description": "For a set commuting instructions, fetch journeys from HAFAS.",
+	"version": "1.0.0",
+	"main": "index.js",
+	"files": [
+		"index.js",
+		"example.js"
+	],
+	"keywords": [
+		"commute",
+		"public transport",
+		"transit",
+		"journey"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/fetch-commute-from-hafas",
+	"repository": "derhuerst/fetch-commute-from-hafas",
+	"bugs": "https://github.com/derhuerst/fetch-commute-from-hafas/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=8"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"tap-min": "^1.2.2",
+		"tape": "^4.9.1"
+	},
+	"scripts": {
+		"test": "env NODE_ENV=dev node test.js | tap-min",
+		"prepublishOnly": "npm test"
+	}
+}

@@ -26,6 +26,7 @@
 		"lodash": "^4.17.11"
 	},
 	"devDependencies": {
+		"bvg-hafas": "^1.1.0",
 		"tap-min": "^1.2.2",
 		"tape": "^4.9.1"
 	},

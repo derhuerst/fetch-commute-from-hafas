@@ -19,7 +19,31 @@ npm install fetch-commute-from-hafas
 ## Usage
 
 ```js
-todo
+const createHafas = require('bvg-hafas')
+const fetchJourneysForCommute = require('fetch-commute-from-hafas')
+
+const commute = {
+	title: 'Seestr. to Potsdamer Platz via Friedrichstr.',
+	from: {
+		stop: '900000009103', // U Seestr.
+		bufferBefore: 6 * 60 * 1000 // 6 minutes
+	},
+	transfers: [{
+		stop: '900000100001', // S+U Friedrichstr.
+		buffer: 30 * 1000 // 30 seconds
+	}],
+	to: {
+		stop: '900000100020', // S+U Potsdamer Platz
+		bufferAfter: 2 * 60 * 1000 // 2 minutes
+	},
+	products: {bus: false}
+}
+const when = new Date('2019-02-18T10:00:00+01:00')
+
+const hafas = createHafas('render-berlin-commute example')
+fetchJourneysForCommute(hafas, commute, when)
+.then(console.log)
+.catch(console.error)
 ```
 
 

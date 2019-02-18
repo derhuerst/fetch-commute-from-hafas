@@ -24,14 +24,14 @@ test('simple', (t) => {
 		products: {bus: false}
 	}
 	const when = 1000 * minute
-	const depAtA = when + 2 * minute
+	const depAtA = when + 5 * minute
 	const arrAtB = depAtA + 10 * minute
-	const depAtB = arrAtB + 3 * minute
+	const depAtB = arrAtB + 6 * minute
 	const arrAtC = depAtB + 11 * minute
 	const w1 = {
 		walking: true,
-		departure: toIsoStr(when),
-		arrival: toIsoStr(when + 2 * minute)
+		departure: toIsoStr(depAtA - 2 * minute),
+		arrival: toIsoStr(depAtA)
 	}
 	const w2 = {
 		walking: true,
@@ -65,7 +65,7 @@ test('simple', (t) => {
 		if (call === 1) {
 			t.equal(from, 'A')
 			t.equal(to, 'B')
-			t.equal(fromIsoStr(opt.departure), when + 2 * minute)
+			t.equal(fromIsoStr(opt.departure), when)
 			return [
 				{legs: [j1l1]}
 			] // todo: 2nd journey

@@ -12,10 +12,8 @@ const initalThreads = (c, initialWhen) => {
 		...transfers,
 		{stop: c.to.stop, buffer: c.to.bufferAfter}
 	]
-	const tasks = [
-		{buffer: true, duration: c.from.bufferBefore}
-	]
 	let prevStop = c.from.stop
+	const tasks = []
 	for (const {stop, buffer} of steps) {
 		tasks.push({from: prevStop, to: stop})
 		prevStop = stop
@@ -82,8 +80,15 @@ const fetchJourneysForCommute = async (hafas, commute, initialWhen) => {
 		threads = flatten(await Promise.all(threads.map(iterate)))
 	}
 
-	// todo: post processing
-	return threads.map(thread => ({legs: thread.journey}))
+	return threads.map(({journey}) => {
+		const depOfFirst = +new Date(journey[0].departure)
+		const firstWalkingLeg = {
+			walking: true,
+			departure: new Date(depOfFirst - commute.from.bufferBefore).toISOString(),
+			arrival: new Date(depOfFirst).toISOString()
+		}
+		return {legs: [firstWalkingLeg, ...journey]}
+	})
 }
 
 module.exports = fetchJourneysForCommute

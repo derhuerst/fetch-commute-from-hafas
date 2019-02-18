@@ -84,10 +84,32 @@ test('simple', (t) => {
 
 	const hafasMock = {journeys: mockJourneys}
 	fetchJourneys(hafasMock, commute, when)
-	.then((journeys) => {
-		t.deepEqual(journeys, [{
-			legs: [w1, j1l1, w2, j2l1, w3]
+	.then((results) => {
+		t.deepEqual(results, [{
+			err: null,
+			journey: {legs: [w1, j1l1, w2, j2l1, w3]}
 		}])
+		t.end()
+	})
+	.catch(t.ifError)
+})
+
+test('0 journeys', (t) => {
+	const commute = {
+		from: {stop: 'A', bufferBefore: 0},
+		to: {stop: 'C', bufferAfter: 0}
+	}
+	const when = 1000 * minute
+
+	const mockJourneys = (from, to, opt) => Promise.resolve([])
+	const hafasMock = {journeys: mockJourneys}
+	fetchJourneys(hafasMock, commute, when)
+	.then(([result]) => {
+		t.ok(result.err)
+		t.equal(result.err.message, 'no journeys found')
+		t.equal(result.err.from, 'A')
+		t.equal(result.err.to, 'C')
+		t.ok(result.err.opts)
 		t.end()
 	})
 	.catch(t.ifError)

@@ -35,6 +35,7 @@ test('simple', (t) => {
 	}
 	const w2 = {
 		walking: true,
+		transfer: true,
 		departure: toIsoStr(arrAtB),
 		arrival: toIsoStr(arrAtB + 3 * minute)
 	}

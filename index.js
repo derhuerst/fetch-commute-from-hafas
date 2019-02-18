@@ -20,7 +20,6 @@ const initalThreads = (c, initialWhen) => {
 		tasks.push({buffer: true, duration: buffer})
 	}
 
-	// todo: use seamless-immutable
 	return [
 		{err: null, when: initialWhen, tasks, journey: []}
 	]
@@ -40,6 +39,7 @@ const iterator = (hafas, hafasOpts) => async (thread) => {
 			departure: formatWhen(thread.when),
 			arrival: formatWhen(thread.when + task.duration)
 		}
+		if (thread.journey.length > 0 && thread.tasks.length > 1) newLeg.transfer = true
 		return [{
 			...thread,
 			when: thread.when + task.duration,

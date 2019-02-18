@@ -76,8 +76,9 @@ test('simple', (t) => {
 			t.equal(to, 'C')
 			t.equal(fromIsoStr(opt.departure), arrAtB + 3 * minute)
 			return [
-				{legs: [j2l1]}
-			] // todo: leg with `cancelled: true`
+				{legs: [j2l1]},
+				{legs: [{...j2l1, cancelled: true}]}
+			]
 		}
 		t.fail('journeys() called too often')
 		return []

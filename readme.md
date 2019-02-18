@@ -42,7 +42,11 @@ const when = new Date('2019-02-18T10:00:00+01:00')
 
 const hafas = createHafas('render-berlin-commute example')
 fetchJourneysForCommute(hafas, commute, when)
-.then(console.log)
+.then((results) => {
+	for (const res of results) {
+		if (!res.err) console.log(res.journey)
+	}
+})
 .catch(console.error)
 ```
 

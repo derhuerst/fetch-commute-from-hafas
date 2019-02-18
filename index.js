@@ -65,8 +65,8 @@ const iterator = (hafas, hafasOpts) => async (thread) => {
 
 	// one new thread for each valid & uncancelled journey
 	return journeys
-	.map(j => j.legs.find(l => !l.walking))
-	.filter(newLeg => newLeg && !newLeg.cancelled)
+	.map(j => j.legs.find(l => !l.walking && !l.cancelled))
+	.filter(newLeg => !!newLeg)
 	.map((newLeg) => ({
 		when: +new Date(newLeg.arrival),
 		tasks: thread.tasks.slice(1),

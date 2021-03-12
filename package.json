@@ -19,14 +19,17 @@
 	"bugs": "https://github.com/derhuerst/fetch-commute-from-hafas/issues",
 	"license": "ISC",
 	"engines": {
-		"node": ">=8"
+		"node": ">=12"
 	},
 	"dependencies": {
 		"debug": "^4.1.1",
 		"lodash": "^4.17.11"
 	},
+	"peerDependencies": {
+		"hafas-client": "^5.0.0"
+	},
 	"devDependencies": {
-		"bvg-hafas": "^1.1.0",
+		"bvg-hafas": "^3.0.1",
 		"tap-min": "^1.2.2",
 		"tape": "^4.9.1"
 	},

@@ -67,21 +67,21 @@ test('simple', (t) => {
 			t.equal(from, 'A')
 			t.equal(to, 'B')
 			t.equal(fromIsoStr(opt.departure), when)
-			return [
+			return {journeys: [
 				{legs: [j1l1]}
-			] // todo: 2nd journey
+			]} // todo: 2nd journey
 		}
 		if (call === 2) {
 			t.equal(from, 'B')
 			t.equal(to, 'C')
 			t.equal(fromIsoStr(opt.departure), arrAtB + 3 * minute)
-			return [
+			return {journeys: [
 				{legs: [j2l1]},
 				{legs: [{...j2l1, cancelled: true}]}
-			]
+			]}
 		}
 		t.fail('journeys() called too often')
-		return []
+		return {journeys: []}
 	}
 
 	const hafasMock = {journeys: mockJourneys}
@@ -103,7 +103,7 @@ test('0 journeys', (t) => {
 	}
 	const when = 1000 * minute
 
-	const mockJourneys = (from, to, opt) => Promise.resolve([])
+	const mockJourneys = async (from, to, opt) => ({journeys: []})
 	const hafasMock = {journeys: mockJourneys}
 	fetchJourneys(hafasMock, commute, when)
 	.then(([result]) => {

@@ -51,10 +51,10 @@ const iterator = (hafas, hafasOpts) => async (thread) => {
 	const opts = {
 		remarks: false, startWithWalking: false,
 		...hafasOpts,
-		departure: new Date(thread.when),
+		departure: thread.when,
 		results: RESULTS_PER_STEP
 	}
-	const journeys = await hafas.journeys(task.from, task.to, opts)
+	const {journeys} = await hafas.journeys(task.from, task.to, opts)
 	if (journeys.length === 0) {
 		const err = new Error('no journeys found')
 		err.from = task.from

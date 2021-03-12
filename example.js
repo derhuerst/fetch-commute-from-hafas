@@ -20,7 +20,7 @@ const commute = {
 }
 
 const hafas = createHafas('fetch-commute-from-hafas example')
-const when = new Date('2019-02-18T10:00:00+01:00')
+const when = new Date('2021-03-18T10:00:00+01:00')
 
 fetchJourneysForCommute(hafas, commute, when)
 .then((journeys) => {

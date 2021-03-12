@@ -5,8 +5,8 @@
 [![npm version](https://img.shields.io/npm/v/fetch-commute-from-hafas.svg)](https://www.npmjs.com/package/fetch-commute-from-hafas)
 [![build status](https://api.travis-ci.org/derhuerst/fetch-commute-from-hafas.svg?branch=master)](https://travis-ci.org/derhuerst/fetch-commute-from-hafas)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/fetch-commute-from-hafas.svg)
-[![chat with me on Gitter](https://img.shields.io/badge/chat%20with%20me-on%20gitter-512e92.svg)](https://gitter.im/derhuerst)
-[![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
+[![support me via GitHub Sponsors](https://img.shields.io/badge/support%20me-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
+[![chat with me on Twitter](https://img.shields.io/badge/chat%20with%20me-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
 
 
 ## Installation
@@ -49,6 +49,13 @@ fetchJourneysForCommute(hafas, commute, when)
 })
 .catch(console.error)
 ```
+
+
+## Related
+
+- [`manual-hafas-routing`](https://github.com/derhuerst/manual-hafas-routing) – An experiment for manual routing via HAFAS.
+- [`hafas-find-alternative-legs`](https://github.com/derhuerst/hafas-find-alternative-legs) – Given a [`hafas-client`](https://npmjs.com/package/hafas-client) journey, get alternatives for each leg from HAFAS.
+- [`hafas-collect-departures-at`](https://github.com/derhuerst/hafas-collect-departures-at) – Utility to collect departures, using any HAFAS client.
 
 
 ## Contributing

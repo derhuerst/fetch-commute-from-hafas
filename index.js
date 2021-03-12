@@ -81,7 +81,7 @@ const fetchJourneysForCommute = async (hafas, commute, initialWhen) => {
 	})
 
 	let threads = initalThreads(commute, initialWhen)
-	while (true) {
+	while (true) { // eslint-disable-line no-constant-condition
 		debug('iteration')
 		const workLeft = threads.some(thread => !thread.err && thread.tasks.length > 0)
 		debug('work left?', workLeft)
